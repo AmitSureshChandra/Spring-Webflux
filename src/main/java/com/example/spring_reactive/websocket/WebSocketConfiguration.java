@@ -49,7 +49,6 @@ public class WebSocketConfiguration {
             Flux<WebSocketMessage> messageFlux = publish
                     .map(evt -> {
                         try {
-
                             return objectMapper.writeValueAsString(evt.getSource());
                         }
                         catch (JsonProcessingException e) {

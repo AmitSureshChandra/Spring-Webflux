@@ -28,14 +28,6 @@ public class ServerSentEventController {
 	@GetMapping(path = "/sse/profiles", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
 	public Flux<String> profiles(){
 		return this.events.map(e -> {
-			
-			try {
-				System.out.println(objectMapper.writeValueAsBytes(e) + "\n\n");
-			} catch (JsonProcessingException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			
 			try {
 				return objectMapper.writeValueAsString(e) + "\n\n";
 			}catch (Exception error) {
